@@ -8,3 +8,11 @@
     - Tested with sqllite, will test it against oracle 12g
     - Table data loaded from a csv file (TODO: use fixtures properly)
     - Model accessible via ipython shell
+
+
+
+
+### REST API
+    - Built on Falcon
+
+
