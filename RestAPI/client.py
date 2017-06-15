@@ -17,28 +17,37 @@ def processLogFiles():
 	_files = sys.argv[1:]
 	log.info(' Files list {} '.format(_files))
 	_headers = []
-	_row = []
-
-	for _file in _files[1:]:
-			_json = json.loads(requests.get('{}/{}/{}'.format(REST_URL, 'log', _file)).content)
-			log.info(' ---> resp -- {} -- '.format(list(_json.keys())))
-			_headers.append(list(_json.keys()))
-			for k, v in _json.items():
-				log.info(' ---> item -- {} -- '.format(_json[k]))
-				if 'portfolios_loaded' in k :
-					log.info(' ---> port  -- {} -- '.format(v[0]))
-					if not v :
-						p = '|'.join(v[0][0])
-						_row.append(p)
-				else:
-					_row.append(''.join(str(v[0])))
 
 
+	_json = json.loads(requests.get('{}/{}/{}'.format(REST_URL, 'log', _files[0])).content)
 	log.info(' ---> headers  -- {} -- '.format(_headers))
 	with open(OUT_FILE, 'w', newline='') as fo :
+		_headers = list(_json.keys())
 		writer = csv.DictWriter(fo, fieldnames = _headers, delimiter = ',')
 		writer.writeheader()
-		writer.writerows(_row)
+
+	with open(OUT_FILE, 'a', newline='') as fr :
+		_rwriter = csv.writer(fr, delimiter = ',')
+		for _file in _files:
+				_row = []
+				_json = json.loads(requests.get('{}/{}/{}'.format(REST_URL, 'log', _file)).content)
+				log.info(' ---> resp -- {} -- '.format(list(_json.keys())))
+				for k in _headers:
+					log.info(' ---> item -- {} -- '.format(_json[k]))
+					'''
+					if 'portfolios_loaded' in k :
+
+						if not _json[k]:
+							log.info(' ---> port  -- {} -- '.format(_json[k][0]))
+							p = '|'.join(_json[k][0])
+							_row.append(p)
+					else:
+					'''
+					_row.append(''.join(str(_json[k][0])))
+				_rwriter.writerow(_row)
+
+
+
 
 
 

@@ -1,0 +1,4 @@
+end_time_est,client_version,session_length,error_count,time_zone,portfolios_loaded,log_file_name,start_time_est,user_name
+02/15/2014 00:10:06:958053,cmlib/7.1.2.19.ft.m64.lnx,log_sample_3.log,5,GB,"['PRC_DOWNLOAD_PROD_LOCAL', 'PRC_DOWNLOAD,123']",log_sample_3.log,02/14/2014 13:00:05:972900,process124
+02/14/2014 23:14:23:324287,cmlib/7.1.3.33.ft.rh6.lnx,log_sample_1.log,8,Singapore,"['~PM_TEST', 'PM_TESTXYZ']",log_sample_1.log,02/14/2014 11:39:52:835039,janedoe
+02/14/2014 20:55:35:389088,cmlib/7.1.4.53.rh6.m64.lnx,log_sample_2.log,13,EST5EDT,None,log_sample_2.log,02/14/2014 06:10:58:151076,johnsmith
